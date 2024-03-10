@@ -1,0 +1,67 @@
+package fr.nkri.wizapi;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import fr.nkri.wizapi.cmds.CommandFramework;
+import fr.nkri.wizapi.logs.Logs;
+import fr.nkri.wizapi.logs.enums.LogsType;
+import fr.nkri.wizapi.utils.guis.WizInvManager;
+import fr.nkri.wizapi.utils.json.adapter.LocationAdapter;
+import org.bukkit.Location;
+import org.bukkit.event.Listener;
+import org.bukkit.plugin.PluginManager;
+import org.bukkit.plugin.java.JavaPlugin;
+
+/*
+Developed by NKRI: 10/03/2024
+ */
+
+public class WizAPI extends JavaPlugin {
+
+    private CommandFramework commandFramework;
+    private Gson gson;
+
+    public WizAPI(){}
+
+    @Override
+    public void onEnable() {
+        Logs.sendLog("WizAPI", "Starting... Please wait for the initialization process to complete.", LogsType.INFO);
+        this.commandFramework = new CommandFramework(this);
+        this.gson = getGsonBuilder().create();
+        WizInvManager.register(this);
+        super.onEnable();
+    }
+
+    @Override
+    public void onDisable() {
+        Logs.sendLog("WizAPI", "Good Bye ! Thanks for using WizAPI, plugin being unloaded. \n\n Developed by NKRI", LogsType.INFO);
+        super.onDisable();
+    }
+
+    public void registerCommand(final Object object){
+        this.commandFramework.registerCommands(object);
+    }
+
+    public void registerListeners(final Listener listener){
+        final PluginManager pluginManager = getServer().getPluginManager();
+
+        pluginManager.registerEvents(listener, this);
+    }
+
+    //Json
+    public GsonBuilder getGsonBuilder(){
+        return new GsonBuilder().setPrettyPrinting().serializeNulls().disableHtmlEscaping().registerTypeAdapter(Location.class, new LocationAdapter());
+    }
+
+    public String serialize(final Object obj){
+        return this.gson.toJson(obj);
+    }
+
+    public <T> T deserialize(final String json, final Class<T> type){
+        return this.gson.fromJson(json, type);
+    }
+
+    public Gson getGson() {
+        return gson;
+    }
+}
