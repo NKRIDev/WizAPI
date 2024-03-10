@@ -12,12 +12,16 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-/*
-Developed by NKRI: 10/03/2024
+/**
+ *
+ * @author NKRI
+ * @version 1.0
+ * @date 10/03/2024
  */
 
 public class WizAPI extends JavaPlugin {
 
+    private static WizAPI INSTANCE;
     private CommandFramework commandFramework;
     private Gson gson;
 
@@ -25,6 +29,7 @@ public class WizAPI extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        INSTANCE = this;
         Logs.sendLog("WizAPI", "Starting... Please wait for the initialization process to complete.", LogsType.INFO);
         this.commandFramework = new CommandFramework(this);
         this.gson = getGsonBuilder().create();
@@ -63,5 +68,9 @@ public class WizAPI extends JavaPlugin {
 
     public Gson getGson() {
         return gson;
+    }
+
+    public static WizAPI getInstance() {
+        return INSTANCE;
     }
 }
