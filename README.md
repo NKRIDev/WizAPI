@@ -30,29 +30,27 @@ To put a cooldown on a player, you must enter the player, the duration of the co
       
       @EventHandler  
       public void onItemEat(final PlayerItemConsumeEvent e){  
-	      final Player player = e.getPlayer();  
-	      final ItemStack stack = e.getItem();  
+      final Player player = e.getPlayer();  
+      final ItemStack stack = e.getItem();  
       
-	      if(stack == null){  
-		      return;  
-		  }  
-		  
-	      if(stack.getType() == Material.GOLDEN_APPLE){  
-		      if(!cooldownManager.isCooldown(player, stack)){  
-			      e.setCancelled(true);  
-			      player.sendMessage("§cYou have to wait before you can eat an apple!");  
-			      return;  
-			  }  
-		  
-		      cooldownManager.setCooldown(player, 100, stack);  
-		      player.sendMessage("§cYou have just entered cooldown with the golden apple.");  
-	     } 
-	   }
-	 }
+      if(stack == null){  
+      return;  
+     }  
+      if(stack.getType() == Material.GOLDEN_APPLE){  
+      if(!cooldownManager.isCooldown(player, stack)){  
+      e.setCancelled(true);  
+      player.sendMessage("§cYou have to wait before you can eat an apple!");  
+      return;  
+     }  
+      cooldownManager.setCooldown(player, 100, stack);  
+      player.sendMessage("§cYou have just entered cooldown with the golden apple.");  
+     } }}
 
 
 
 ## Other
 In case of problem or information, here are my contact details:
+
 • Discord: https://discord.gg/fjhQ9nfpFw
+
 • Email: nkri.dev@gmail.com
