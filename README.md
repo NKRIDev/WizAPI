@@ -24,7 +24,7 @@ NOTE : Only available in 1.8.8
 **→ Cooldown:**
 To put a cooldown on a player, you must enter the player, the duration of the cooldown in seconds and an object (this can be a String, an ItemStack, etc.). Don't forget to call the instance of the CooldownManager class. Here is an example where we put a 100 second cooldown on players who eat a golden apple.
 
-        public class CooldownListeners implements Listener {
+    public class CooldownListeners implements Listener {
     
         private final CooldownManager cooldownManager = CooldownManager.getInstance();
     
@@ -49,6 +49,9 @@ To put a cooldown on a player, you must enter the player, the duration of the co
             }
         }
     }
+    
+**→ Others:**
+*I'm still doing the documentation.*
 
 ## Other
 In case of problem or information, here are my contact details:
