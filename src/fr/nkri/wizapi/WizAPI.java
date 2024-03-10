@@ -34,6 +34,7 @@ public class WizAPI extends JavaPlugin {
         this.commandFramework = new CommandFramework(this);
         this.gson = getGsonBuilder().create();
         WizInvManager.register(this);
+        getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
         super.onEnable();
     }
 

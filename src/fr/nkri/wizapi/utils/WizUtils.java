@@ -1,11 +1,16 @@
 package fr.nkri.wizapi.utils;
 
+import fr.nkri.wizapi.WizAPI;
+import fr.nkri.wizapi.utils.titles.VanillaTitle;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -57,7 +62,7 @@ public class WizUtils {
     }
 
     //Sérialisation/Désérialisation d'itemstacl (util pour les stocker en base de donnée)
-    private List<ItemStack> deserializeItemStack(final String itemInDataBase){
+    public static List<ItemStack> deserializeItemStack(final String itemInDataBase){
         final List<ItemStack> itemList = new ArrayList<>();
         final List<String> stringList = new ArrayList<>(Arrays.asList(itemInDataBase.split(";")));
 
@@ -75,7 +80,7 @@ public class WizUtils {
         return itemList;
     }
 
-    private String serializeItemStack(final List<ItemStack> stackList) {
+    public static String serializeItemStack(final List<ItemStack> stackList) {
         String item = "";
 
         for(ItemStack stack : stackList) {
@@ -83,5 +88,21 @@ public class WizUtils {
         }
 
         return item;
+    }
+
+    //Envoi un joueur sur un serveur du bungeecord: joueur, nom du serveur (dans la config du proxy)
+    public static void sendServer(final Player player, final String serverName) {
+        final ByteArrayOutputStream b = new ByteArrayOutputStream();
+        final DataOutputStream out = new DataOutputStream(b);
+
+        try {
+            out.writeUTF("Connect");
+            out.writeUTF(serverName);
+        }
+        catch(IOException e) {
+            e.printStackTrace();
+        }
+
+        player.sendPluginMessage(WizAPI.getInstance(), "BungeeCord", b.toByteArray());
     }
 }
