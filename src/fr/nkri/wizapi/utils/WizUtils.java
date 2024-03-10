@@ -17,7 +17,7 @@ import java.util.List;
 
 public class WizUtils {
 
-    private static String LINE = "§7—————————————————————————————————————";
+    public static String LINE = "§7—————————————————————————————————————";
 
     //Retourne vrai si l'inventaire du joueur est plein
     public static boolean isInventoryFull(final Player player) {
