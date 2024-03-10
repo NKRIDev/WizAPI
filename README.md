@@ -24,29 +24,31 @@ NOTE : Only available in 1.8.8
 **→ Cooldown:**
 To put a cooldown on a player, you must enter the player, the duration of the cooldown in seconds and an object (this can be a String, an ItemStack, etc.). Don't forget to call the instance of the CooldownManager class. Here is an example where we put a 100 second cooldown on players who eat a golden apple.
 
-    public class CooldownListeners implements Listener {  
-      
-      private final CooldownManager cooldownManager = CooldownManager.getInstance();  
-      
-      @EventHandler  
-      public void onItemEat(final PlayerItemConsumeEvent e){  
-      final Player player = e.getPlayer();  
-      final ItemStack stack = e.getItem();  
-      
-      if(stack == null){  
-      return;  
-     }  
-      if(stack.getType() == Material.GOLDEN_APPLE){  
-      if(!cooldownManager.isCooldown(player, stack)){  
-      e.setCancelled(true);  
-      player.sendMessage("§cYou have to wait before you can eat an apple!");  
-      return;  
-     }  
-      cooldownManager.setCooldown(player, 100, stack);  
-      player.sendMessage("§cYou have just entered cooldown with the golden apple.");  
-     } }}
-
-
+        public class CooldownListeners implements Listener {
+    
+        private final CooldownManager cooldownManager = CooldownManager.getInstance();
+    
+        @EventHandler
+        public void onItemEat(final PlayerItemConsumeEvent e){
+            final Player player = e.getPlayer();
+            final ItemStack stack = e.getItem();
+    
+            if(stack == null){
+                return;
+            }
+    
+            if(stack.getType() == Material.GOLDEN_APPLE){
+                if(!cooldownManager.isCooldown(player, stack)){
+                    e.setCancelled(true);
+                    player.sendMessage("§cYou have to wait before you can eat an apple!");
+                    return;
+                }
+    
+                cooldownManager.setCooldown(player, 100, stack);
+                player.sendMessage("§cYou have just entered cooldown with the golden apple.");
+            }
+        }
+    }
 
 ## Other
 In case of problem or information, here are my contact details:
