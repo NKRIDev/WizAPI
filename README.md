@@ -18,5 +18,7 @@ Do you want to integrate WizAPI into your project? That's great ! You will see, 
 
 ## Other
 In case of problem or information, here are my contact details:
+
 • Discord: https://discord.gg/fjhQ9nfpFw
+
 • Email: nkri.dev@gmail.com
