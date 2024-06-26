@@ -1,3 +1,4 @@
+
 # WizAPI
 This is the Minecraft API (version: 1.8.8)
 If you use it, and need help ask NKRI.
@@ -50,6 +51,27 @@ To put a cooldown on a player, you must enter the player, the duration of the co
         }
     }
     
+ **→ Recover the instance:** retrieving the WizAPI instance allows you to retrieve a lot of classes and methods. Here's how to do it, do this in your Main class of your plugin and retrieve the API instance with its getter:
+
+    import fr.nkri.wizapi.WizAPI;
+    
+    public class Main extends JavaPlugin {
+    
+        private WizAPI wizAPI;
+    
+        @Override
+        public void onEnable() {
+            this.wizAPI = WizAPI.getInstance();
+        }
+    
+        @Override
+        public void onDisable() {}
+    
+        public WizAPI getWizAPI() {
+            return wizAPI;
+        }
+    }
+
 **→ Others:**
 *I'm still doing the documentation.*
 
