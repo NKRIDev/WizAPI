@@ -135,6 +135,7 @@ Here is an example with a class that allows you to save a 'FactionPoint' object 
         }
     }
 
+**Important**, you do not need to create 'types adapter' classes for 'itemstack' and 'location': they are already done.
 
 **→ Others:**
 *I'm still doing the documentation.*
