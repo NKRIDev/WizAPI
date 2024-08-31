@@ -1,3 +1,4 @@
+
 # WizAPI
 This is the Minecraft API (version: 1.8.8)
 If you use it, and need help ask NKRI.
@@ -50,6 +51,92 @@ To put a cooldown on a player, you must enter the player, the duration of the co
         }
     }
     
+ **→ Recover the instance:** retrieving the WizAPI instance allows you to retrieve a lot of classes and methods. Here's how to do it, do this in your Main class of your plugin and retrieve the API instance with its getter:
+
+    import fr.nkri.wizapi.WizAPI;
+    
+    public class Main extends JavaPlugin {
+    
+        private static Main INSTANCE;
+        private WizAPI wizAPI;
+    
+        @Override
+        public void onEnable() {
+            INSTANCE = this;
+            this.wizAPI = WizAPI.getInstance();
+        }
+    
+        @Override
+        public void onDisable() {}
+    
+        public WizAPI getWizAPI() {
+            return wizAPI;
+        }
+        
+        public static Main getInstance(){
+			return INSTANCE;
+        }
+    }
+
+**→ Saving JSON:**
+To recover the 2 methods:
+- Serialize your object into json:
+
+    Main.getInstance().getWizAPI().serialize(votre_objet);
+- Deserialize your object into json:
+
+    final String json = FileUtils.loadContent(file); //We assume that you have already defined your File
+    final FactionPoint factionPoint = Main.getInstance()getWizAPI().deserialize(json, votre_objet.class);
+    
+Here is an example with a class that allows you to save a 'FactionPoint' object in a 'datas' folder. It should be noted that here we use the 'FileUtils' class of the API.
+
+    import fr.nkri.tuto.Main;
+    import fr.nkri.wizapi.logs.Logs;
+    import fr.nkri.wizapi.logs.enums.LogsType;
+    import fr.nkri.wizapi.utils.json.FileUtils;
+    
+    import java.io.File;
+    import java.util.Map;
+    
+    public class FactionData {
+    
+        private final Main main;
+        private final File saveDir;
+    
+        public FactionData(final Main main){
+            this.main = main;
+            this.saveDir = new File(main.getDataFolder(), "/datas/");
+        }
+    
+        public void load() {
+            if (!saveDir.exists()) {
+                return;
+            }
+    
+            for (File file : saveDir.listFiles()) {
+                if (file.isFile()) {
+                    final String json = FileUtils.loadContent(file);
+                    //This is an example object
+                    final FactionPoint factionPoint = this.main.getWizAPI().deserialize(json, FactionPoint.class); //This is how we deserialize an object
+    
+                    //Your action...
+                }
+            }
+    
+            Logs.sendLog("[Loader]", "Data recovery completed successfully.", LogsType.SUCCES);
+        }
+    
+        public void save(final FactionPoint factionPoint) {
+            final File file = new File(this.saveDir, factionPoint.getTag() + ".json");
+            final String json = main.getWizAPI().serialize(factionPoint); //How to serialize
+    
+            FileUtils.save(file, json);
+            Logs.sendLog("[Saver]", "Saved data successfully.", LogsType.SUCCES);
+        }
+    }
+
+**Important**, you do not need to create 'types adapter' classes for 'itemstack' and 'location': they are already done.
+
 **→ Others:**
 *I'm still doing the documentation.*
 
