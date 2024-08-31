@@ -1,7 +1,7 @@
 package fr.nkri.wizapi.packets;
 
 
-import net.minecraft.server.v1_9_R2.Packet;
+import net.minecraft.server.v1_8_R3.Packet;
 
 public class PacketModel {
 

@@ -8,11 +8,11 @@ import java.util.Map;
 import com.google.common.collect.BiMap;
 import fr.nkri.wizapi.logs.Logs;
 import fr.nkri.wizapi.logs.enums.LogsType;
-import net.minecraft.server.v1_9_R2.EnumProtocol;
-import net.minecraft.server.v1_9_R2.EnumProtocolDirection;
-import net.minecraft.server.v1_9_R2.Packet;
-import net.minecraft.server.v1_9_R2.PlayerConnection;
-import org.bukkit.craftbukkit.v1_9_R2.entity.CraftPlayer;
+import net.minecraft.server.v1_8_R3.EnumProtocol;
+import net.minecraft.server.v1_8_R3.EnumProtocolDirection;
+import net.minecraft.server.v1_8_R3.Packet;
+import net.minecraft.server.v1_8_R3.PlayerConnection;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
 public class PacketManager {

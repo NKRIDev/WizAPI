@@ -1,8 +1,8 @@
 package fr.nkri.wizapi.packets.client;
 
 import fr.nkri.wizapi.packets.WizPacket;
-import net.minecraft.server.v1_9_R2.PacketDataSerializer;
-import org.bukkit.craftbukkit.v1_9_R2.inventory.CraftItemStack;
+import net.minecraft.server.v1_8_R3.PacketDataSerializer;
+import org.bukkit.craftbukkit.v1_8_R3.inventory.CraftItemStack;
 import org.bukkit.inventory.ItemStack;
 
 import java.io.IOException;
@@ -24,7 +24,7 @@ public abstract class ClientPacket extends WizPacket {
         return packetDataSerializer.readDouble();
     }
 
-    public int[] readString(final PacketDataSerializer packetDataSerializer) throws IOException{
+    public String readString(final PacketDataSerializer packetDataSerializer) throws IOException{
         return packetDataSerializer.c(191919);
     }
 
@@ -33,7 +33,7 @@ public abstract class ClientPacket extends WizPacket {
     }
 
     public ItemStack readStack(final PacketDataSerializer packetDataSerializer) throws IOException{
-        return CraftItemStack.asBukkitCopy(packetDataSerializer.k());
+        return CraftItemStack.asBukkitCopy(packetDataSerializer.i());
     }
 
     public float readFloat(final PacketDataSerializer packetDataSerializer) throws IOException{

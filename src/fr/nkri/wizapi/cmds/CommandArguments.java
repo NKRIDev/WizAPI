@@ -1,9 +1,5 @@
 package fr.nkri.wizapi.cmds;
 
-import com.google.common.primitives.Doubles;
-import com.google.common.primitives.Ints;
-import org.apache.commons.lang.StringUtils;
-import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.command.Command;

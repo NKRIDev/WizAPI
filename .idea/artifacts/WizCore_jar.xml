@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="WizCore:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/WizCore_jar</output-path>
+    <root id="archive" name="WizCore.jar">
+      <element id="module-output" name="WizCore" />
+    </root>
+  </artifact>
+</component>

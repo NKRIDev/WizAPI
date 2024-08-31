@@ -60,6 +60,7 @@ public class WizAPI extends JavaPlugin {
     public GsonBuilder getGsonBuilder(){
         return new GsonBuilder().setPrettyPrinting().serializeNulls()
                 .disableHtmlEscaping()
+                .excludeFieldsWithoutExposeAnnotation()
                 .registerTypeAdapter(ItemStack.class, new ItemStackAdpater())
                 .registerTypeAdapter(Location.class, new LocationAdapter());
     }

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="WizAPI:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/WizAPI_jar</output-path>
+    <root id="archive" name="WizAPI.jar">
+      <element id="module-output" name="WizAPI" />
+    </root>
+  </artifact>
+</component>
