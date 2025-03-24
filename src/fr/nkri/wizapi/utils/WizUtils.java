@@ -105,4 +105,29 @@ public class WizUtils {
 
         player.sendPluginMessage(WizAPI.getInstance(), "BungeeCord", b.toByteArray());
     }
+
+    public static String transformColor(final String color){
+        return color.replace("&", "§");
+    }
+
+    //Retourne vrai si le joueur à bien cette item dans sont inventaire
+    public static boolean haveItem(final Player player, final ItemStack stack) {
+        return haveItem(player, stack, 1);
+    }
+
+    public static boolean haveItem(final Player player, final ItemStack stack, final int quantity) {
+        return getItemAmount(player, stack) >= quantity;
+    }
+
+    public static int getItemAmount(final Player player, final ItemStack stack) {
+        int amount = 0;
+
+        for (ItemStack stackInventory : player.getInventory().getContents()) {
+            if (stackInventory != null && stackInventory.getType() != Material.AIR && stackInventory.isSimilar(stack) && stackInventory.getData().getData() == stack.getData().getData()) {
+                amount += stackInventory.getAmount();
+            }
+        }
+
+        return amount;
+    }
 }
