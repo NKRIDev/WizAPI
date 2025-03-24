@@ -1,5 +1,6 @@
 package fr.nkri.wizapi.utils.areas;
 
+import com.google.gson.annotations.Expose;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -9,8 +10,10 @@ Objet représentant une zone
  */
 
 public class Area {
-    private int minx, miny, minz;
 
+    @Expose(serialize = true)
+    private int minx, miny, minz;
+    @Expose(serialize = true)
     private int maxx, maxy, maxz;
 
     public Area(final Location min, final Location max){
