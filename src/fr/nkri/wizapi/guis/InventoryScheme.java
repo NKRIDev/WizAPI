@@ -1,4 +1,4 @@
-package fr.nkri.wizapi.utils.guis;
+package fr.nkri.wizapi.guis;
 
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;

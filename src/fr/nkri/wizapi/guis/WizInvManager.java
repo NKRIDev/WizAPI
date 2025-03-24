@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package fr.nkri.wizapi.utils.guis;
+package fr.nkri.wizapi.guis;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;

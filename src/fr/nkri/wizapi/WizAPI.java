@@ -5,7 +5,7 @@ import com.google.gson.GsonBuilder;
 import fr.nkri.wizapi.cmds.CommandFramework;
 import fr.nkri.wizapi.logs.Logs;
 import fr.nkri.wizapi.logs.enums.LogsType;
-import fr.nkri.wizapi.utils.guis.WizInvManager;
+import fr.nkri.wizapi.guis.WizInvManager;
 import fr.nkri.wizapi.utils.json.adapter.ItemStackAdpater;
 import fr.nkri.wizapi.utils.json.adapter.LocationAdapter;
 import org.bukkit.Location;
