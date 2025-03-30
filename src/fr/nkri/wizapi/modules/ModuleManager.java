@@ -46,7 +46,7 @@ public class ModuleManager {
     //save data
     public void loadAll() {
         modules.forEach(Module::load);
-        main.registerPackets();
+        //main.registerPackets();
     }
 
     public void saveAll() {
