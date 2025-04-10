@@ -21,7 +21,7 @@ public class WizTranslator {
      * @param text text to convert
      * @return The name translated into French, or the English name if no translation exists
      */
-    public static String translateMaterial(final String text) {
+    public static String translate(final String text) {
         if (translations == null) {
             return "Inconnu";
         }
